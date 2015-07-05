@@ -37,7 +37,8 @@ public class PlayerController : MonoBehaviour {
             count++;
             SetCountText();
         }
-	}
+
+    }
 
     void SetCountText()   //atualiza a contagem de pontos no UI
     {
