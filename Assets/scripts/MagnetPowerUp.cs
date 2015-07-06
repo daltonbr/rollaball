@@ -3,32 +3,13 @@ using System.Collections;
 
 public class MagnetPowerUp : MonoBehaviour {
 
-   // public float radius;
-    //private Transform player;
-   // private Transform pickup;
-   // private Vector3 gravityPull;
-
-    /*
-    void OnTriggerStay (Collider other)
-    {
-        pickup = other.transform;
-        player = this.transform;
-
-        if (other.tag == "Pick Up")
-        {
-            gravityPull = player.transform.position - pickup.transform.position;  // vetor diferenca        
-            other.transform.position = gravityPull;
-
-            other.GetComponent<Rigidbody>().MovePosition((gravityPull) * 2.0f);
-            Debug.Log(gravityPull);
-        }
-    }
-    */
     public LayerMask m_MagneticLayers;
     //public Vector3 m_Position;
-    public float m_Radius;
-    public float intensity;
+    public float m_Radius;    // sugestao 3
+    public float intensity;   // sugestao 60
+    public float duration;    // duration of the PowerUp
     private Vector3 gravityPull;
+    public ParticleSystem particlesPowerUp; //
 
     void FixedUpdate()
     {

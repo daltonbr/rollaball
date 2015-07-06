@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11468256}
   m_Layer: 0
   m_Name: MagnetPowerUp
-  m_TagString: Untagged
+  m_TagString: Magnet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   deltaTime: 5
+  player: {fileID: 0}
 --- !u!136 &13636268
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -102,6 +103,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: deltaTime
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Magnet
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

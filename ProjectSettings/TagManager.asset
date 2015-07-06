@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Pick Up
-  - New Tag
+  - PickUp
+  - Magnet
   layers:
   - Default
   - TransparentFX
@@ -15,7 +15,7 @@ TagManager:
   - UI
   - 
   - 
-  - Pick Up
+  - PickUp
   - 
   - 
   - 
