@@ -12,7 +12,7 @@ GameObject:
   - 136: {fileID: 13636268}
   - 23: {fileID: 2346206}
   - 114: {fileID: 11468256}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MagnetPowerUp
   m_TagString: Magnet
   m_Icon: {fileID: 0}
@@ -73,8 +73,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a0d64a5d62d7c948bd4673b98cc5f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  active: 0
-  deltaTime: 5
   player: {fileID: 0}
 --- !u!136 &13636268
 CapsuleCollider:
@@ -107,6 +105,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_TagString
       value: Magnet
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

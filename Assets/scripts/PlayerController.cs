@@ -9,13 +9,27 @@ public class PlayerController : MonoBehaviour {
     private int count;
 
     public GameController gameController;
-	
-	void Start ()
+
+    void Start ()
 	{
   		playerRB = GetComponent<Rigidbody>();
+        gameController = FindObjectOfType<GameController>();  // search for the GameController
     }
-	
-	void FixedUpdate ()
+    //OnLevelWasLoaded is called after a new scene has finished loading
+    void OnLevelWasLoaded()
+    {
+        //  Debug.Log("Scene Loaded");
+        
+    }
+
+
+    void Awake()
+    {
+        //Get a reference to GameController -  attached to UI object
+        gameController = GetComponent<GameController>();
+    }
+
+    void FixedUpdate ()
 	{
 		float moveHorizontal = Input.GetAxis ("Horizontal");
 		float moveVertical = Input.GetAxis ("Vertical");	

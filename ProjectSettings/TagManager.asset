@@ -16,10 +16,10 @@ TagManager:
   - 
   - 
   - PickUp
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - PowerUp
+  - Wall
+  - Player
   - 
   - 
   - 

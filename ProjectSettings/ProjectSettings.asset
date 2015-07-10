@@ -9,7 +9,7 @@ PlayerSettings:
   targetDevice: 2
   targetResolution: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: OneManArmyStudio
   productName: rollaball
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -29,7 +29,7 @@ PlayerSettings:
   iosAppInBackgroundBehavior: 0
   displayResolutionDialog: 1
   allowedAutorotateToPortrait: 1
-  allowedAutorotateToPortraitUpsideDown: 1
+  allowedAutorotateToPortraitUpsideDown: 0
   allowedAutorotateToLandscapeRight: 1
   allowedAutorotateToLandscapeLeft: 1
   useOSAutorotation: 1
@@ -71,7 +71,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.Company.ProductName
+  bundleIdentifier: com.onemanarmy.rollaball
   bundleVersion: 1.0
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
@@ -131,7 +131,11 @@ PlayerSettings:
     banner: {fileID: 0}
   androidGamepadSupportLevel: 0
   resolutionDialogBanner: {fileID: 0}
-  m_BuildTargetIcons: []
+  m_BuildTargetIcons:
+  - m_BuildTarget: 
+    m_Icons:
+    - m_Icon: {fileID: 0}
+      m_Size: 128
   m_BuildTargetBatching: []
   m_BuildTargetGraphicsAPIs: []
   webPlayerTemplate: APPLICATION:Default
