@@ -12,7 +12,7 @@ public class PowerUpTimer : MonoBehaviour {
         if (other.gameObject.CompareTag("Player"))  //soh ativa o powerUp qdo o Player o pega
         {
             deltaTime = player.GetComponent<MagnetPowerUp>().duration;
-            player.GetComponent<MagnetPowerUp>().enabled = true;  //habilita o Script Magnet no player
+            player.GetComponent<MagnetPowerUp>().enabled = true;  //habilita o Script Magnet no playerRB
             this.GetComponent<MeshRenderer>().enabled = false;
             player.GetComponent<MagnetPowerUp>().particlesPowerUp.Play();
             StartCoroutine( TimeUp() );   
@@ -24,7 +24,7 @@ public class PowerUpTimer : MonoBehaviour {
         yield return new WaitForSeconds(deltaTime);  // time that the PowerUp is active
         Debug.Log("time's up!");
         player.GetComponent<MagnetPowerUp>().particlesPowerUp.Stop();
-        player.GetComponent<MagnetPowerUp>().enabled = false;  //desabilita o Script Magnet no player
+        player.GetComponent<MagnetPowerUp>().enabled = false;  //desabilita o Script Magnet no playerRB
         Destroy(this.gameObject);  //destroi o PowerUp
     }
 }

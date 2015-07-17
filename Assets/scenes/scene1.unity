@@ -2412,6 +2412,7 @@ GameObject:
   - 54: {fileID: 2067205363}
   - 114: {fileID: 2067205362}
   - 114: {fileID: 2067205364}
+  - 114: {fileID: 2067205365}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2521,6 +2522,18 @@ MonoBehaviour:
   intensity: 60
   duration: 10
   particlesPowerUp: {fileID: 219644079}
+--- !u!114 &2067205365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2067205357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b725048cc3512b549ae5047fbd2acefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensity: 200
 --- !u!1 &2107169019
 GameObject:
   m_ObjectHideFlags: 0
