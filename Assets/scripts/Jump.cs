@@ -3,45 +3,50 @@ using System.Collections;
 
 public class Jump : MonoBehaviour {
 
-    public float intensity = 1;
-    bool isGrounded = true;
-    bool isDoubleJumped = false;
-    Rigidbody playerRB;
+	public float intensity;//Intensity of the jump.
+	private bool grounded;//Indicates if the player touches the ground.
+	public bool doubleJump;//Indicates if the player is alowed to double jump.
+	public bool jump;//Indicates if te palyer is alowed to jump
+	public bool doubleJumped;//Indicates if the player double jumped.
 
-    void Awake()
-    {
-        playerRB = GetComponent<Rigidbody>();
-    }
+	private Rigidbody rb;//Contains the rigidybody component;
+
+	//Gets the rigidybody of the sphere.
+	void Start(){
+		rb = GetComponent<Rigidbody> ();
+	}
 
 
-    // Update is called once per frame
-    void Update()
-    {
+	void Update(){
+		SetGrounded ();
 
-        if (Input.GetButton("Jump"))
-        {
-         
-            if ( isGrounded || !isDoubleJumped )
-            {
-                DoJump();
-            }
-        }
+		if (jump && Input.GetButtonDown ("Jump")) {
+			if(grounded){
+				doJump (intensity);
+			}else{
+				if(doubleJump && !doubleJumped){
+					doJump (intensity);
+					doubleJumped = true;
+				}
+			}
+		}
+	}
 
-    }
-        void DoJump()
-        {
-            if (!isDoubleJumped)
-            {
-                playerRB.AddForce(transform.up * intensity);
-                isDoubleJumped = true;
-            }
+	/*Casts a ray a little bit larger than the radio of the sphere collider on axis -y and
+	sets grounded and doubleJumped as true if it hits a surface.*/
+	void SetGrounded(){
+		if(Physics.Raycast(transform.position, new Vector3(0, -1, 0), 0.51f)){
+			grounded = true;
+			doubleJumped = false;
+		}
+		else{
+			grounded = false;
+		}
+	}
 
-            
-            if (isGrounded)
-            {
-                playerRB.AddForce(transform.up * intensity);
-                isGrounded = false;
-            }
-    }
+	//Adds force to +y axis
+	public void doJump(float intensity){
+		rb.AddForce(new Vector3(0.0f, intensity, 0.0f));
+	}
 
 }

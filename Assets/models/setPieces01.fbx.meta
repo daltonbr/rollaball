@@ -1,16 +1,38 @@
 fileFormatVersion: 2
-guid: e679119194d1172418b421cf237810ca
-timeCreated: 1438718401
+guid: ca2b2b8d44e2d484aa3e172f16599a0c
+timeCreated: 1438722957
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCube1
-    6400000: //RootNode
+    100000: group
+    100002: pasted__pCube1
+    100004: pCube1
+    100006: pCylinder1
+    100008: pSphere1
+    100010: //RootNode
+    400000: group
+    400002: pasted__pCube1
+    400004: pCube1
+    400006: pCylinder1
+    400008: pSphere1
+    400010: //RootNode
+    2300000: pasted__pCube1
+    2300002: pCube1
+    2300004: pCylinder1
+    2300006: pSphere1
+    3300000: pasted__pCube1
+    3300002: pCube1
+    3300004: pCylinder1
+    3300006: pSphere1
+    4300000: pCylinder1
+    4300002: pCube1
+    4300004: pSphere1
+    4300006: pasted__pCube1
+    6400000: pasted__pCube1
+    6400002: pCube1
+    6400004: pCylinder1
+    6400006: pSphere1
   materials:
     importMaterials: 1
     materialName: 0
