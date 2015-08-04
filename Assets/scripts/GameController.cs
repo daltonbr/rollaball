@@ -5,30 +5,31 @@ using System.Collections;
 public class GameController : MonoBehaviour {
 
     //public float timeIncresase = 2;
-    public bool timeElapsed = false;
+    private bool timeElapsed = false;
+    private float timeRemaining;
+    public Text winText;
+    public GameObject ui;
+//    public GameController gameController;
+
     private int pickUpsRemaining;
     private int pickUpsTotal;
-    public float timeRemaining;
-
-    public Text winText;
-    
     private int count;
 
+    private GameObject[] pickUps;  // retorna NULL se nao achou nada com a TAG
+    
     //private QuitApplication quitApplication;
     private ShowPanels showPanels;
     
-    public GameObject ui;
-
-    public GameController gameController;
-
     void Awake ()
     {
         //Get a reference to QuitApplication attached to UI object
         //quitApplication = ui.GetComponent<QuitApplication>();
 
         //Get a reference to ShowPanels attached to UI object
-        showPanels = ui.GetComponent<ShowPanels>();
+        GameObject[] pickUps = GameObject.FindGameObjectsWithTag("PickUp") as GameObject[];  // retorna NULL se nao achou nada com a TAG
+        pickUpsTotal = pickUps.Length; //conta o total de pickups na fase, de acordo com o vetor pickUps
 
+        showPanels = ui.GetComponent<ShowPanels>();
         //ui = GetComponents<UI>;
 
     }
@@ -48,7 +49,6 @@ public class GameController : MonoBehaviour {
         if (level == 1)
         {
             Debug.Log("Scene " + level + " Loaded");
-            gameController = GetComponent<GameController>();
         }
 
     }
@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour {
 
     public void UpdatePickUpCount()  // public pq sera acessado por outros scripts
     {
-        GameObject[] pickUps = GameObject.FindGameObjectsWithTag("PickUp") as GameObject[];  // retorna NULL se nao achou nada com a TAG
+        pickUps = GameObject.FindGameObjectsWithTag("PickUp") as GameObject[];  // retorna NULL se nao achou nada com a TAG
         pickUpsRemaining = pickUps.Length;
         if (pickUpsRemaining == 0)
         {
