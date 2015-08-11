@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PowerUpTimer : MonoBehaviour {
 
-    private float deltaTime;  //pega do script do PowerUp em questao
+    float deltaTime;  //pega do script do PowerUp em questao
     public GameObject player;
     //public Component powerUpScript; // por enquanto nao funciona
 
@@ -21,8 +21,19 @@ public class PowerUpTimer : MonoBehaviour {
 
     IEnumerator TimeUp()  // to WaitForSeconds we need this function to be iEnumerator
     {
-        yield return new WaitForSeconds(deltaTime);  // time that the PowerUp is active
+        float elapsed = 0;
+        while(elapsed < deltaTime)
+        {
+            yield return null;
+            elapsed += Time.deltaTime;
+        }
+        // yield return new WaitForSeconds(deltaTime);  // time that the PowerUp is active
         Debug.Log("time's up!");
+        TurnOffMagnet();
+    }
+
+    void TurnOffMagnet()
+    {
         player.GetComponent<MagnetPowerUp>().particlesPowerUp.Stop();
         player.GetComponent<MagnetPowerUp>().enabled = false;  //desabilita o Script Magnet no playerRB
         Destroy(this.gameObject);  //destroi o PowerUp

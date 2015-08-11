@@ -21,7 +21,7 @@ public class MagnetPowerUp : MonoBehaviour {
         {
             rigidbody = (Rigidbody)collider.gameObject.GetComponent(typeof(Rigidbody));
             gravityPull = transform.position - rigidbody.transform.position;  //vetor diferenca
-            if (rigidbody == null)  // se nao tem collider associoado...
+            if (rigidbody == null)  // se nao tem collider associado...
             {
                 continue;  // ...continua iterando
             }
