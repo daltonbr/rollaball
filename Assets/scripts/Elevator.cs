@@ -34,7 +34,7 @@ public class Elevator : MonoBehaviour {
         }
         else
         {
-            //Debug.Log()
+            ElevatorMoveToStart();
         }
         if (finalPosElevator)
         {
