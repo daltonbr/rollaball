@@ -23,7 +23,7 @@ public class Elevator : MonoBehaviour {
         initialPosition = elevator.position; // guarda a posicao inicial do elevador
         //finalPosition = elevator.position + (Vector3.up * liftHeight); //calcula a posicao final
         finalPosition = elevator.position + deltaPosition;
-        Debug.Log("Elevador de " + initialPosition + " ate " + finalPosition);
+        //Debug.Log("Elevador de " + initialPosition + " ate " + finalPosition);
     }
 
     void FixedUpdate()
@@ -46,7 +46,7 @@ public class Elevator : MonoBehaviour {
     {
         if (elevator.position == finalPosition) //confere se o objeto já está na posicao final...
         {
-            Debug.Log("Chegou na posicao final!");
+            //Debug.Log("Chegou na posicao final!");
             finalPosElevator = true;
             initialPosElevator = false;
 
@@ -63,7 +63,7 @@ public class Elevator : MonoBehaviour {
     {
         if (elevator.position == initialPosition) //confere se o objeto já está na posicao inicial...
         {
-            Debug.Log("Chegou na posicao inicial!");
+            //Debug.Log("Chegou na posicao inicial!");
             initialPosElevator = true;
             finalPosElevator = false;
 
