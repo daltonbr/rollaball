@@ -3,21 +3,22 @@ using System.Collections;
 
 public class Fade : MonoBehaviour {
 
-    public MeshRenderer objectMesh;
+    private MeshRenderer objectMesh;
     
     void Awake()
     {
         objectMesh = this.GetComponent<MeshRenderer>();
     }
 
-	void OnTriggerStay () {
-        Debug.Log("Objeto transparente");
-       // objectMesh.renderer.material.color.a = 100;
-        //renderer.material.color.a = 0;
+	void OnTriggerEnter () {
+        //Debug.Log("Objeto transparente");
+        // pequena gambiarra. O ideal seria trabalhar com o canal alpha
+        // objectMesh.renderer.material.color.a = 100;
+        objectMesh.enabled = false;  // por enquanto só desabilitamos o mesh
     }
 
-    // Update is called once per frame
-    void Update () {
-	
-	}
+    void OnTriggerExit()
+    {
+        objectMesh.enabled = true;
+    }
 }
