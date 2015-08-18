@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PickUp
   - Magnet
+  - Bomb
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - PowerUp
   - Wall
   - Player
-  - 
+  - Bomb
   - 
   - 
   - 

@@ -20,11 +20,13 @@ public class Explosion : MonoBehaviour
 
 		}
 	}
-	void Boom()
+	public void Boom(float timeToExplode)
     {
-
-		Vector3 explosionPos = transform.position;
+        Vector3 explosionPos = transform.position;
         //GameObject explosion = (GameObject)Instantiate(Resources.Load("MyPrefab")); ;
+
+        StartCoroutine(WaitAndBoom(timeToExplode));  //wait
+
         Instantiate(explosion, explosionPos, Quaternion.identity);
 
         Collider[] colliders = Physics.OverlapSphere (explosionPos, radius);
@@ -34,7 +36,31 @@ public class Explosion : MonoBehaviour
 			if (hit.attachedRigidbody != null)
 				hit.attachedRigidbody.AddExplosionForce (power, explosionPos, radius,1.0f);
             //Debug.Log("Boom");
+            Destroy(this.gameObject);
 		}
+    }
+
+    IEnumerator WaitAndBoom(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        //print("Waited " + Time.time);
+    }
+
+public void Boom()   // refazer esse codigo com o outro Boom() com timer
+    {
+        Vector3 explosionPos = transform.position;
+        //GameObject explosion = (GameObject)Instantiate(Resources.Load("MyPrefab")); ;
+        Instantiate(explosion, explosionPos, Quaternion.identity);
+
+        Collider[] colliders = Physics.OverlapSphere(explosionPos, radius);
+
+        foreach (Collider hit in colliders)
+        {
+            if (hit.attachedRigidbody != null)
+                hit.attachedRigidbody.AddExplosionForce(power, explosionPos, radius, 1.0f);
+            //Debug.Log("Boom");
+            Destroy(this.gameObject);
+        }
     }
     //void OnDrawGizmos()
     //{
