@@ -9,18 +9,19 @@ public class GameController : MonoBehaviour {
     private float timeRemaining;
     public Text winText;
     public GameObject ui;
-//    public GameController gameController;
+    //    public GameController gameController;
 
     private int pickUpsRemaining;
     private int pickUpsTotal;
     private int count;
+    private int currentLevel = 1; // numero do level atual;
 
     private GameObject[] pickUps;  // retorna NULL se nao achou nada com a TAG
-    
+
     //private QuitApplication quitApplication;
     private ShowPanels showPanels;
-    
-    void Awake ()
+
+    void Awake()
     {
         //Get a reference to QuitApplication attached to UI object
         //quitApplication = ui.GetComponent<QuitApplication>();
@@ -31,9 +32,17 @@ public class GameController : MonoBehaviour {
 
         showPanels = ui.GetComponent<ShowPanels>();
         //ui = GetComponents<UI>;
-
     }
 
+    public void Die()
+    {
+        
+        Debug.Log("Morreu!");
+        Application.LoadLevel(currentLevel);
+    }
+
+
+    
     // Chamado quando termina a fase
 	public void LoadNext()  
 	{

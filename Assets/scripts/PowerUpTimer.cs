@@ -4,8 +4,14 @@ using System.Collections;
 public class PowerUpTimer : MonoBehaviour {
 
     float deltaTime;  //pega do script do PowerUp em questao
-    public GameObject player;
+    GameObject player;
     //public Component powerUpScript; // por enquanto nao funciona
+
+    void Awake()
+    {
+        player = GameObject.FindWithTag("Player");
+        if (!player) Debug.Log("GameObject Player nao encontrado");
+    }
 
     void OnTriggerEnter(Collider other) //algo colide com o PowerUp
     {
