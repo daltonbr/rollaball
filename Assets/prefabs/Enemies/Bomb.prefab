@@ -72,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.42000008, y: 1.25, z: -4.23999977}
+  m_LocalPosition: {x: -9.33899117, y: .689999998, z: 5.90944004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 469300}
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 2
   power: 700
-  explosion: {fileID: 145312, guid: 344e5d22a11e48c4da2c3170f82feae9, type: 2}
+  explosion: {fileID: 431138, guid: 66ac9b979eec00a43a8098c6a1c63272, type: 2}
 --- !u!135 &13598242
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1277,6 +1277,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosion
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour {
     private int pickUpsRemaining;
     private int pickUpsTotal;
     private int count;
-    private int currentLevel = 1; // numero do level atual;
+    //private int currentLevel = 1; // numero do level atual;
 
     private GameObject[] pickUps;  // retorna NULL se nao achou nada com a TAG
 
@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour {
     {
         
         Debug.Log("Morreu!");
-        Application.LoadLevel(currentLevel);
+        Application.LoadLevel(Application.loadedLevel);  //recarrega o nivel atual
     }
 
 
@@ -72,7 +72,7 @@ public class GameController : MonoBehaviour {
 
     void OnGUI()
     {
-        GUI.Box(new Rect(0, 0, Screen.width, Screen.height), "Remaining PickUps: " + pickUpsRemaining + " from " + pickUpsTotal);
+        //GUI.Box(new Rect(0, 0, Screen.width/2, Screen.height/2), "Remaining PickUps: " + pickUpsRemaining + " from " + pickUpsTotal);
     }
 
     public void UpdatePickUpCount()  // public pq sera acessado por outros scripts
