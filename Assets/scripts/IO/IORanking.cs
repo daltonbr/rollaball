@@ -144,6 +144,8 @@ public static class IORanking
 		RankingData.Rank bestTime = rd.Ranks[(int)Ranking.BestTime];
 		RankingData.Rank bestScoreTime = rd.Ranks[(int)Ranking.BestScoreTime];
 
+		#region Ranking - Best Score
+
 		for (int i = RankingData.MaxEntries -1; i >= 0; i--) {
 			if (bestScore.Name[i].Equals(playerName)) {
 				curRank = i;
@@ -152,8 +154,6 @@ public static class IORanking
 				newRank = i;
 			}
 		}
-
-		Debug.Log (curRank + " ; " + newRank);
 
 		// Nao foi melhor que seu melhor
 		if (newRank > curRank) {
@@ -182,7 +182,88 @@ public static class IORanking
 			rd.Ranks [(int)Ranking.BestScore].Score[newRank] = score;
 		}
 
-		Debug.Log (needSave);
+		#endregion
+
+		#region Ranking - Best Time
+		
+		for (int i = RankingData.MaxEntries -1; i >= 0; i--) {
+			if (bestTime.Name[i].Equals(playerName)) {
+				curRank = i;
+			}
+			if (score < bestTime.Score[i] || bestTime.Score[i] == -1) {
+				newRank = i;
+			}
+		}
+		
+		// Nao foi melhor que seu melhor
+		if (newRank > curRank) {
+			return;
+		} else if (newRank == curRank && score > bestTime.Score [curRank]) {
+			return;
+		}
+		
+		// Melhorou a pontuacao mas nao mudou de posicao
+		else if (newRank == curRank) {
+			rd.Ranks [(int)Ranking.BestTime].Score [newRank] = (float)score;
+			needSave = true;
+		}
+		// Subiu de ranking
+		else {
+			// Move os jogadores para baixo
+			for (int i = curRank-1; i >= newRank; i--) {
+				needSave = true;
+				string tName = rd.Ranks [(int)Ranking.BestTime].Name [i];
+				float tScore = rd.Ranks [(int)Ranking.BestTime].Score [i];
+				
+				rd.Ranks [(int)Ranking.BestTime].Name [i+1] = tName;
+				rd.Ranks [(int)Ranking.BestTime].Score [i+1] = tScore;
+			}
+			rd.Ranks [(int)Ranking.BestTime].Name [newRank] = playerName;
+			rd.Ranks [(int)Ranking.BestTime].Score[newRank] = score;
+		}
+		
+		#endregion
+
+		#region Ranking - Best Score-Time
+		
+		for (int i = RankingData.MaxEntries -1; i >= 0; i--) {
+			if (bestScoreTime.Name[i].Equals(playerName)) {
+				curRank = i;
+			}
+			if ((score/gameTime) > bestScoreTime.Score[i]) {
+				newRank = i;
+			}
+		}
+		
+		// Nao foi melhor que seu melhor
+		if (newRank > curRank) {
+			return;
+		} else if (newRank == curRank && score < bestScoreTime.Score [curRank]) {
+			return;
+		}
+		
+		// Melhorou a pontuacao mas nao mudou de posicao
+		else if (newRank == curRank) {
+			rd.Ranks [(int)Ranking.BestTime].Score [newRank] = (float)score;
+			needSave = true;
+		}
+		// Subiu de ranking
+		else {
+			// Move os jogadores para baixo
+			for (int i = curRank-1; i >= newRank; i--) {
+				needSave = true;
+				string tName = rd.Ranks [(int)Ranking.BestScoreTime].Name [i];
+				float tScore = rd.Ranks [(int)Ranking.BestScoreTime].Score [i];
+				
+				rd.Ranks [(int)Ranking.BestScoreTime].Name [i+1] = tName;
+				rd.Ranks [(int)Ranking.BestScoreTime].Score [i+1] = tScore;
+			}
+			rd.Ranks [(int)Ranking.BestScoreTime].Name [newRank] = playerName;
+			rd.Ranks [(int)Ranking.BestScoreTime].Score[newRank] = score;
+		}
+		
+		#endregion
+
 		if (needSave)
 			SaveLevel (level, rd);
 	}
