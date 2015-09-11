@@ -3,6 +3,8 @@ using UnityEngine.UI;  // for using Ui Text's
 using System.Collections;
 
 public class GameController : MonoBehaviour {
+	public static GameController Instance;
+	public Constants.Levels currentLevel;
 
     //public float timeIncresase = 2;
     private bool timeElapsed = false;
@@ -14,7 +16,6 @@ public class GameController : MonoBehaviour {
     private int pickUpsRemaining;
     private int pickUpsTotal;
     private int count;
-    //private int currentLevel = 1; // numero do level atual;
 
     private GameObject[] pickUps;  // retorna NULL se nao achou nada com a TAG
 
@@ -32,6 +33,9 @@ public class GameController : MonoBehaviour {
 
         showPanels = ui.GetComponent<ShowPanels>();
         //ui = GetComponents<UI>;
+
+		count = 0;
+		Instance = this;
     }
 
     public void Die()
@@ -77,6 +81,8 @@ public class GameController : MonoBehaviour {
 
     public void UpdatePickUpCount()  // public pq sera acessado por outros scripts
     {
+		// TODO : Valor dos PickUps
+		count++;
         pickUps = GameObject.FindGameObjectsWithTag("PickUp") as GameObject[];  // retorna NULL se nao achou nada com a TAG
         pickUpsRemaining = pickUps.Length;
         if (pickUpsRemaining == 0)
@@ -84,5 +90,16 @@ public class GameController : MonoBehaviour {
             winText.text = "You Win!";
 			LoadNext();
         }
-    }  
+    }
+
+	/// <summary>
+	/// Chamado quando a fase termina,
+	/// faz as atualizacoes do ranking
+	/// </summary>
+	public void OnLevelEnd()
+	{
+		// TODO : Adicionar nome do jogador
+		Debug.Log (string.Format ("Tempo: {0} , Count: {1}", this.timeRemaining, count));
+		IORanking.UpdateRank(currentLevel, "nome", this.timeRemaining, count);
+	}
 }

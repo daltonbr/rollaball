@@ -1,24 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Constants {
+
+	// Tags devem ser adicionadas aqui
+	// como constants para evitar erros
+	// de digitacao
 	public class Tags {
-		public const string PickUps = "Pick Up";
-		public const string SC = "Status Change";
+		public const string Player = "Player";
+		public const string PickUps = "PickUp";
 		public const string GController = "GameController";
+		public const string Magnet = "Magnet";
+		public const string Bomb = "Bomb";
 	}
 
-	public const string MainMenu = "MainMenu";
-	public const string LevelSelect = "LevelSelector";
-	public const string Shop = "Shop";
-
+	// Adicione as fases neste enum
+	[System.Serializable]
 	public enum Levels {
-		Level01 = 0,
-		Level02 = 1,
-		Level03 = 2,
+		Level01,
+		Level02,
 
-		Max // Deve sempre ser o ultimo
+		// Deve sempre ser o ultimo
+		Max
 	}
+
+	// Nomes de cenas normais
+	public const string MainMenu = "introScene";
+	// Fases
+	public static Dictionary<Levels, string> LevelName = new Dictionary<Levels, string> ()
+	{
+		{ Levels.Level01, "scene1-Dalton" },
+		{ Levels.Level02, "Level2" },
+	};
 }
 
 public class RankingData

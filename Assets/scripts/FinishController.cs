@@ -14,9 +14,10 @@ public class FinishController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag(Constants.Tags.Player))
         {
             Debug.Log("Voce entrou no BlackHole");
+			GameController.Instance.OnLevelEnd();
             finishLevel.FinishScreen();
         }
     }
