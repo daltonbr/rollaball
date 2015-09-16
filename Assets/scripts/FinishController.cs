@@ -17,7 +17,10 @@ public class FinishController : MonoBehaviour {
         if (other.CompareTag(Constants.Tags.Player))
         {
             Debug.Log("Voce entrou no BlackHole");
+
+			// Processa o fim da fase
 			LevelController.Instance.OnLevelEnd();
+
             finishLevel.FinishScreen();
         }
     }
