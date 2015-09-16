@@ -42,8 +42,10 @@ public class PlayerController : MonoBehaviour {
 		if (other.gameObject.CompareTag("PickUp") )
 		{
             //gameController.UpdatePickUpCount(); // atualiza a contagem de PickUps    
-            other.gameObject.SetActive(false);  // desativa o pickUp
-            gameController.UpdatePickUpCount();  // conta pickUps restantes
+            //other.gameObject.SetActive(false);  // desativa o pickUp
+            //gameController.UpdatePickUpCount();  // conta pickUps restantes
+
+			LevelController.Instance.OnPickUpGet(other.gameObject);
         }
     }
 

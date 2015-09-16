@@ -4,7 +4,6 @@ using System.Collections;
 
 public class GameController : MonoBehaviour {
 	public static GameController Instance;
-	public Constants.Levels currentLevel;
 
     //public float timeIncresase = 2;
     private bool timeElapsed = false;
@@ -91,15 +90,4 @@ public class GameController : MonoBehaviour {
 			LoadNext();
         }
     }
-
-	/// <summary>
-	/// Chamado quando a fase termina,
-	/// faz as atualizacoes do ranking
-	/// </summary>
-	public void OnLevelEnd()
-	{
-		// TODO : Adicionar nome do jogador
-		Debug.Log (string.Format ("Tempo: {0} , Count: {1}", this.timeRemaining, count));
-		IORanking.UpdateRank(currentLevel, "nome", this.timeRemaining, count);
-	}
 }
