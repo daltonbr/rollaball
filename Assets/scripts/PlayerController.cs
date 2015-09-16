@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour {
             //other.gameObject.SetActive(false);  // desativa o pickUp
             //gameController.UpdatePickUpCount();  // conta pickUps restantes
 
-			LevelController.Instance.OnPickUpGet(other.gameObject);
+			GameController.Instance.OnPickUpGet(other.gameObject);
         }
     }
 

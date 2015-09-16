@@ -18,6 +18,7 @@ public class Constants {
 	// Adicione as fases neste enum
 	[System.Serializable]
 	public enum Levels {
+		None = -1,
 		Level01,
 		Level02,
 
@@ -32,6 +33,10 @@ public class Constants {
 	{
 		{ Levels.Level01, "scene1-Dalton" },
 		{ Levels.Level02, "Level2" },
+
+		// Fases para valores especiais
+		{ Levels.None, "" },
+		{ Levels.Max, "" }
 	};
 }
 
