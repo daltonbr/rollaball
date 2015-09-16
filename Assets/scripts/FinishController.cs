@@ -9,14 +9,18 @@ public class FinishController : MonoBehaviour {
     void Awake()
     {
         //Get a reference to ShowPanels attached to UI object
-        finishLevel = ui.GetComponent<FinishLevel>();
+		finishLevel = GameController.Instance.showPanels.GetComponent<FinishLevel> ();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag(Constants.Tags.Player))
         {
             Debug.Log("Voce entrou no BlackHole");
+
+			// Processa o fim da fase
+			GameController.Instance.OnLevelEnd();
+
             finishLevel.FinishScreen();
         }
     }
