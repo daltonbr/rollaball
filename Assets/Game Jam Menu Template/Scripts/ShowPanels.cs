@@ -8,7 +8,7 @@ public class ShowPanels : MonoBehaviour {
     public GameObject menuPanel;							//Store a reference to the Game Object MenuPanel 
 	public GameObject pausePanel;							//Store a reference to the Game Object PausePanel 
     public GameObject finishLevelPanel;                     //Store a reference to the Game Object FinishLevelPanel
-
+	public GameScreen gameScreen;							//Store a reference to the Game Object GameScreen
 
     //Call this function to activate and display the Options panel during the main menu
     public void ShowOptionsPanel()
@@ -49,6 +49,22 @@ public class ShowPanels : MonoBehaviour {
 		pausePanel.SetActive (false);
 		optionsTint.SetActive(false);
 
+	}
+
+	/// <summary>
+	/// Mostra o HUD
+	/// </summary>
+	public void ShowGameScreen()
+	{
+		gameScreen.gameObject.SetActive (true);
+	}
+
+	/// <summary>
+	/// Esconde o HUD
+	/// </summary>
+	public void HideGameScreen()
+	{
+		gameScreen.gameObject.SetActive (false);
 	}
 
     public void ShowFinishLevelPanel()
