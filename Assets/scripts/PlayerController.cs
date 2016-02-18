@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
     void Start ()
 	{
   		playerRB = GetComponent<Rigidbody>();
-       // gameController = FindObjectOfType<GameController>();  // search for the GameController
+        
     }
     //OnLevelWasLoaded is called after a new scene has finished loading
     void OnLevelWasLoaded()
@@ -24,8 +24,15 @@ public class PlayerController : MonoBehaviour {
 
     void Awake()
     {
-        //Get a reference to GameController -  attached to UI object
-        //gameController = GetComponent<GameController>();
+        //Get a reference to GameController -  attached to GameController (empty GameObject)
+        gameController = FindObjectOfType<GameController>();  // search for the GameController
+        if (gameController == null ) // in case of the scene was loaded directly (Editor)
+        {
+            Debug.Log("GameController not founded! Instantiating one!");
+            GameObject _GameController = Instantiate(Resources.Load("prefabs/GameController", typeof(GameObject))) as GameObject;
+            gameController = FindObjectOfType<GameController>();
+            gameController.showPanels.HideMenu();
+        }
     }
 
     void FixedUpdate ()

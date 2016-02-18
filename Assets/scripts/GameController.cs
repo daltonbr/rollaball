@@ -39,6 +39,11 @@ public class GameController : MonoBehaviour {
 
 	void Awake()
 	{
+        if (UIPrefab == null )
+        {
+            Debug.Log("UIPrefab not found! Probably loading direct the scene!");
+
+        }
 		OnLevelLoad ();
 	}
 
