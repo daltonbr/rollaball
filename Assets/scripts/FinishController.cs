@@ -28,7 +28,7 @@ public class FinishController : MonoBehaviour {
 
 			// Processa o fim da fase
 			GameController.Instance.OnLevelEnd();
-
+            gameController.PlayBlackHoleSound();
             finishLevel.FinishScreen();
         }
         //gameController.showPanels.HideMenu();

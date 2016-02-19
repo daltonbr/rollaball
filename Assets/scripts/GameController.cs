@@ -2,6 +2,7 @@
 using UnityEngine.UI;  // for using Ui Text's
 using System; // Enum.GetValues
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 	public static GameController Instance;
@@ -20,8 +21,19 @@ public class GameController : MonoBehaviour {
 	private int pickUpsTotal, pickUpsGet;
 	private int gameTime;
 	private int score;
-
     private int count;
+
+    public AudioClip pickUpSound;
+    public AudioClip jumpSound;
+    public AudioClip magnetSound;
+    public AudioClip blackHoleSound;
+    public AudioClip dieSound;
+    public AudioClip[] explosionsSound;
+
+    private AudioSource source;
+
+    public float volLowRange = 0.4f;
+    public float volHighRange = 1.0f;
 
     private GameObject[] pickUps;  // retorna NULL se nao achou nada com a TAG
 
@@ -29,16 +41,10 @@ public class GameController : MonoBehaviour {
 	// escrita e privado.
 	public ShowPanels showPanels { get; private set; }
 
-	void Start ()
-	{
-		//UpdatePickUpCount();
-		//pickUpsTotal = pickUpsRemaining;  // somente no Start;
-		//winText.text = "";
-		// BroadcastMessage("Start Timer", timeRemaining);  // chama o metodo Start Timer, com o parametro timeRemaining
-	}
-
 	void Awake()
 	{
+        source = GetComponent<AudioSource>(); //get the AudioSource from the GameController
+
         if (UIPrefab == null )
         {
             Debug.Log("UIPrefab not found! Probably loading direct the scene!");
@@ -100,7 +106,9 @@ public class GameController : MonoBehaviour {
     public void Die()
     {
         Debug.Log("Morreu!");
-        Application.LoadLevel(Application.loadedLevel);  //recarrega o nivel atual
+        source.PlayOneShot(dieSound, 1F);
+        Scene currentSceneIndex = SceneManager.GetActiveScene();  // get the actual scene and reload it
+        SceneManager.LoadScene(currentSceneIndex.buildIndex);
     }
 
 	/// <summary>
@@ -119,6 +127,8 @@ public class GameController : MonoBehaviour {
 	/// <param name="pickup">Pickup.</param>
 	public void OnPickUpGet(GameObject pickup)
 	{
+
+        source.PlayOneShot(pickUpSound, 1f);
 		// Desabilita o pickup e soma aos pickups recolhidos
 		pickup.SetActive (false);
 		this.pickUpsGet++;
@@ -140,22 +150,36 @@ public class GameController : MonoBehaviour {
 		showPanels.gameScreen.UpdateGameScreen (this.gameTime, this.pickUpsGet, this.pickUpsTotal, this.score);
 	}
 
-
     // Chamado quando termina a fase
-	public void LoadNext()  
+
+    public void PlayMagnetSound()
+    {
+        source.PlayOneShot(magnetSound, 1f);
+    }
+
+    public void PlayBlackHoleSound()
+    {
+        source.PlayOneShot(blackHoleSound, 1f);
+    }
+
+    public void PlayBombSound()
+    {
+        int length = explosionsSound.Length;  //plays a random Explosion sound - according to a sound array in GameController
+        int rand = UnityEngine.Random.Range(0, length - 1);
+        source.PlayOneShot(explosionsSound[rand], 1f);
+    }
+
+    public void PlayJumpSound()
+    {
+        float vol = UnityEngine.Random.Range(volLowRange, volHighRange);
+        source.PlayOneShot(jumpSound, vol);
+    }
+
+    public void LoadNext()  
 	{
         //Invoke("PlayNewMusic", fadeAlphaAnimationClip.length);
         showPanels.ShowFinishLevelPanel();
-        
-        //Application.LoadLevel(1); // hardcoded
-        //Invoke("")
 	}
-
-    
-    void OnGUI()
-    {
-        //GUI.Box(new Rect(0, 0, Screen.width/2, Screen.height/2), "Remaining PickUps: " + pickUpsRemaining + " from " + pickUpsTotal);
-    }
 
     public void UpdatePickUpCount()  // public pq sera acessado por outros scripts
     {

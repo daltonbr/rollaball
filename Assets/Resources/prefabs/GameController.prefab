@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 429066}
   - 114: {fileID: 11414040}
   - 114: {fileID: 11487224}
+  - 114: {fileID: 11432112}
+  - 82: {fileID: 8227120}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -29,6 +31,80 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!82 &8227120
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197106}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 111
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &11414040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -42,6 +118,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIPrefab: {fileID: 198714, guid: 45616935e4fe10f48b62da1347801a16, type: 2}
   currentLevel: 0
+  pickUpSound: {fileID: 8300000, guid: 36c957252a169da48a9dc29bfe122a2b, type: 3}
+  jumpSound: {fileID: 8300000, guid: 432b72ec1f87ca541b0688f14e80a71d, type: 3}
+  magnetSound: {fileID: 8300000, guid: 1864622625cbf7848a95db090ef6420e, type: 3}
+  blackHoleSound: {fileID: 8300000, guid: 6cf0d13702073e5488da2edfb63f2213, type: 3}
+  dieSound: {fileID: 8300000, guid: 2852d068a02203e46a4d4a65523e9a33, type: 3}
+  explosionsSound:
+  - {fileID: 8300000, guid: 8ccbda984679dd14a90a10e28b31e819, type: 3}
+  - {fileID: 8300000, guid: e71ef89ac57696b469d162a0d3e427ff, type: 3}
+  - {fileID: 8300000, guid: 13b25288850ff8242b2a0530de59a8ee, type: 3}
+  - {fileID: 8300000, guid: 997743b8554545a45b049343297318f4, type: 3}
+  volLowRange: 0.4
+  volHighRange: 1
+--- !u!114 &11432112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16ce07724fd643c582fc68f916bd210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameController: {fileID: 0}
 --- !u!114 &11487224
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,18 +5,21 @@ public class PowerUpTimer : MonoBehaviour {
 
     float deltaTime;  //pega do script do PowerUp em questao
     GameObject player;
-    //public Component powerUpScript; // por enquanto nao funciona
+    private GameController gameController;
 
     void Awake()
     {
         player = GameObject.FindWithTag("Player");
         if (!player) Debug.Log("GameObject Player nao encontrado");
+
+        gameController = FindObjectOfType<GameController>(); //reference for playing sound
     }
 
     void OnTriggerEnter(Collider other) //algo colide com o PowerUp
     {
         if (other.gameObject.CompareTag("Player"))  //soh ativa o powerUp qdo o Player o pega
         {
+            gameController.PlayMagnetSound();
             deltaTime = player.GetComponent<MagnetPowerUp>().duration;
             player.GetComponent<MagnetPowerUp>().enabled = true;  //habilita o Script Magnet no playerRB
             this.GetComponent<MeshRenderer>().enabled = false;

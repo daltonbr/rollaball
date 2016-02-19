@@ -15,13 +15,7 @@ public class PlayerController : MonoBehaviour {
   		playerRB = GetComponent<Rigidbody>();
         
     }
-    //OnLevelWasLoaded is called after a new scene has finished loading
-    void OnLevelWasLoaded()
-    {
-        //  Debug.Log("Scene Loaded");   
-    }
-
-
+ 
     void Awake()
     {
         //Get a reference to GameController -  attached to GameController (empty GameObject)
@@ -48,11 +42,7 @@ public class PlayerController : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag("PickUp") )
 		{
-            //gameController.UpdatePickUpCount(); // atualiza a contagem de PickUps    
-            //other.gameObject.SetActive(false);  // desativa o pickUp
-            //gameController.UpdatePickUpCount();  // conta pickUps restantes
-
-			GameController.Instance.OnPickUpGet(other.gameObject);
+            GameController.Instance.OnPickUpGet(other.gameObject);
         }
     }
 

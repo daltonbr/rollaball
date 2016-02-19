@@ -27,13 +27,8 @@ public class MagnetPowerUp : MonoBehaviour {
             }
             else
             {
-                //Debug.Log(rigidbody.name);
-                //rigidbody.AddExplosionForce(m_Force * -1, transform.position + m_Position, m_Radius);
-                //rigidbody.AddForce( gravityPull.normalized * 1/(gravityPull.magnitude) );   // diferenca - modulo  (linear)
                 rigidbody.AddForce((gravityPull.normalized) * intensity * 1 / (Mathf.Pow((gravityPull.magnitude), 3.0F)));   // || diferenca ||*30 - modulo^-3  
                 //Debug.Log(Mathf.Pow((gravityPull.magnitude), 3.0F));
-                //private float t;
-                //Mathf.Lerp(gravityPull.normalized, gravityPull.magnitude, t)
             }
         }
     }

@@ -9,7 +9,13 @@ public class Explosion : MonoBehaviour
     public Transform explosion;
 	Collider[] colliders;
 	Vector3 explosionPos;
-	
+    private GameController gameController;
+
+    void Awake()
+    {
+        gameController = FindObjectOfType<GameController>();
+    }
+
 	void OnTriggerEnter(Collider other) 
 	{
 		this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -28,6 +34,7 @@ public class Explosion : MonoBehaviour
         StartCoroutine(WaitAndBoom(timeToExplode));  //wait
 
         Instantiate(explosion, explosionPos, Quaternion.identity);
+        gameController.PlayBombSound();
 
         Collider[] colliders = Physics.OverlapSphere (explosionPos, radius);
 			
@@ -48,6 +55,7 @@ public class Explosion : MonoBehaviour
 
 public void Boom()   // refazer esse codigo com o outro Boom() com timer
     {
+        gameController.PlayBombSound();
         Vector3 explosionPos = transform.position;
         //GameObject explosion = (GameObject)Instantiate(Resources.Load("MyPrefab")); ;
         Instantiate(explosion, explosionPos, Quaternion.identity);

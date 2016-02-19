@@ -10,13 +10,14 @@ public class Jump : MonoBehaviour {
 	public bool doubleJumped;//Indicates if the player double jumped.
 
 	private Rigidbody rb;//Contains the rigidybody component;
+    private GameController gameController;
 
 	//Gets the rigidybody of the sphere.
-	void Start(){
+	void Awake(){
 		rb = GetComponent<Rigidbody> ();
+        gameController = FindObjectOfType<GameController>();
 	}
-
-
+    
 	void Update(){
 		SetGrounded ();
 
@@ -46,6 +47,7 @@ public class Jump : MonoBehaviour {
 
 	//Adds force to +y axis
 	public void doJump(float intensity){
+        gameController.PlayJumpSound();
 		rb.AddForce(new Vector3(0.0f, intensity, 0.0f));
 	}
 
