@@ -7,7 +7,7 @@ A simple roll a ball game in Unity
 * Murillo Terrabuio
 * Thanks all 2015 trainees!
 
-v1.6 - 02-19-16
+v1.7 - 02-19-16
 
 ## Todo List
 ### UI
@@ -20,12 +20,12 @@ v1.6 - 02-19-16
 
 ### Credits Scene 
 
-### Sounds
-* Menu
-* Pickups
-* Magnets
-* Bombs
-* Die
+### Sounds (done)
+* Menu  (done)
+* Pickups (done)
+* Magnets (done)
+* Bombs (done)
+* Die (done)
 
 ### Extras
 * Shooting Cannon
