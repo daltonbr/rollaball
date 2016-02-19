@@ -4,12 +4,20 @@ using System.Collections;
 public class FinishController : MonoBehaviour {
 
     public GameObject ui;
-    private FinishLevel finishLevel;				//Reference to script on UI GameObject
-    
+    private FinishLevel finishLevel;                //Reference to script on UI GameObject
+    private GameController gameController;
     void Awake()
     {
+        //Get a reference to GameController -  attached to GameController (empty GameObject)
+        gameController = FindObjectOfType<GameController>();  // search for the GameController
+        if (gameController == null) // in case of the scene was loaded directly (Editor)
+        {
+            Debug.Log("GameController not founded! Instantiating one!");
+            GameObject _GameController = Instantiate(Resources.Load("prefabs/GameController", typeof(GameObject))) as GameObject;
+            gameController = FindObjectOfType<GameController>();
+        }
         //Get a reference to ShowPanels attached to UI object
-		finishLevel = GameController.Instance.showPanels.GetComponent<FinishLevel> ();
+        finishLevel = GameController.Instance.showPanels.GetComponent<FinishLevel>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -23,5 +31,6 @@ public class FinishController : MonoBehaviour {
 
             finishLevel.FinishScreen();
         }
+        //gameController.showPanels.HideMenu();
     }
 }

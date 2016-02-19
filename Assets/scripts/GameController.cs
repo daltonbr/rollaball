@@ -84,7 +84,7 @@ public class GameController : MonoBehaviour {
 			pickUpsGet = 0;
 
 			// Ativa o HUD
-			showPanels.ShowGameScreen ();
+			//showPanels.ShowGameScreen ();
 
 			// Inicializa um relogio interno
 			InvokeRepeating ("GameTimer", 0f, 1f);
@@ -198,7 +198,6 @@ public class GameController : MonoBehaviour {
 				return l;
 			}
 		}
-
 		return Constants.Levels.None;
 	}
 }

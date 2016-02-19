@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class FinishLevel : MonoBehaviour {
 
@@ -35,5 +36,19 @@ public class FinishLevel : MonoBehaviour {
         //Time.timeScale = 1;
         //call the HidePausePanel function of the ShowPanels script
         showPanels.HideFinishLevelPanel();
+    }
+
+    public void ReloadLevelButton()
+    {
+        isFinished = false;
+        showPanels.HideFinishLevelPanel();
+        int currentScene = SceneManager.GetActiveScene().buildIndex; //grab the current scene index
+        SceneManager.LoadScene(currentScene);   //and reloads that scene
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void QuitButton()
+    {
+        Application.Quit();
     }
 }
