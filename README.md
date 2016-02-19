@@ -1,14 +1,15 @@
 # Roll-a-Ball (On Steroids)
 A simple roll a ball game in Unity
 
-Authors:
-Infor Jr Studio
-Dalton Lima - sacinopatinete@gmail.com
-Guilherme
-Murillo Terrabuio
+## Develop by InfoJr 2015/2016
+* Dalton Lima - sacinopatinete@gmail.com
+* Guilherme Guiger
+* Murillo Terrabuio
+* Thanks all 2015 trainees!
 
 v1.6 - 02-19-16
 
+## Todo List
 ### UI
 * AutoFit Intro/Menus Texts
 * Menus controlables by Joystick
